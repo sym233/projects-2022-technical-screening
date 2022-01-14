@@ -32,7 +32,32 @@ var assert = require("assert")
 
 const altNumbers = (numArray) => {
     // TODO: COMPLETE THIS FUNCTION
-    return [];
+    const positives = [];
+    const negatives = [];
+    for (const num of numArray) {
+        if (num >= 0) {
+            positives.push(num);
+        } else {
+            negatives.push(num);
+        }
+    }
+    const result = [];
+    const lPos = positives.length;
+    const lNeg = negatives.length;
+    let getPositive = lPos >= lNeg;
+    let iPos = 0;
+    let iNeg = 0;
+    while (iPos < lPos && iNeg < lNeg) {
+        if (getPositive) {
+            result.push(positives[iPos]);
+            iPos++;
+        } else {
+            result.push(negatives[iNeg]);
+            iNeg++;
+        }
+        getPositive = !getPositive;
+    }
+    return result;
 }
 
 module.exports = { altNumbers } // Do not modify this line
